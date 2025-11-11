@@ -1,11 +1,10 @@
 import { createBrowserRouter } from "react-router";
-
 import MainLayouts from "../layouts/MainLayouts";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import Home from "../pages/Home";
 import Plants from "../pages/Plants";
 import MyProfile from "../pages/MyProfile";
+import Login from "../Auth/Login";
+import Signup from "../Auth/Signup";
 
 
 const router = createBrowserRouter(
@@ -25,11 +24,20 @@ const router = createBrowserRouter(
                 {
                     path:'myprofile',
                     element:<MyProfile></MyProfile>
+                },
+                 {
+                    path:'login',
+                    element:<Login></Login>
+                },
+                 {
+                    path:'signup',
+                    element:<Signup></Signup>
                 }
                 
             ]
 
         },
+        
          
     ]
 )

@@ -2,12 +2,17 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import { Outlet } from 'react-router';
 import Footer from '../components/Footer';
+import Login from '../Auth/Login';
+
 
 const MainLayouts = () => {
     return (
         <div className='flex flex-col min-h-screen'>
             <Navbar></Navbar>
-            <div className='flex-1 max-w-screen-2xl w-full'></div>
+            <div className=' '>
+                
+            </div>
+            
             <Outlet></Outlet>
             <Footer></Footer>
         </div>
