@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const Login = () => {
+   
     return (
+     
         <div >
+         
             <div className="hero bg-base-200 min-h-screen ">
   <div className="hero-content flex-col w-[70%] ">
     <div className="text-center ">
@@ -18,7 +21,7 @@ const Login = () => {
           <label className="label">Password</label>
           <input type="password" className="input" placeholder="Password" />
           <div><a className="link link-hover">Forgot password?</a></div>
-          <Link to='/home' className='btn bg-green-500'>Login</Link>
+          <Link  className='btn bg-green-500'>Login</Link>
           <p>Don't have an account ? <Link to='/signup' className='p-2 text-red-500 font-semibold'>Signup</Link></p>
         </fieldset>
       </div>

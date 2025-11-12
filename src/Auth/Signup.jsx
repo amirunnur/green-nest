@@ -22,7 +22,7 @@ const Signup = () => {
           <label className="label">Password</label>
           <input type="password" className="input" placeholder="Password" />
           <div><a className="link link-hover">Forgot password?</a></div>
-          <Link to='/home'  className='btn bg-green-500'>Signup</Link>
+          <Link   className='btn bg-green-500'>Signup</Link>
          <p>Already have an account ? <Link to='/login' className='text-red-500 p-2 font-semibold'>Login</Link> </p>
         </fieldset>
       </div>

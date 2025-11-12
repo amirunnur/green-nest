@@ -1,0 +1,98 @@
+[
+  {
+    "plantId": 1,
+    "plantName": "Snake Plant",
+    "category": "Air Purifier",
+    "price": 18,
+    "rating": 4.8,
+    "availableStock": 10,
+    "careLevel": "Easy",
+    "description": "A hardy plant that purifies indoor air and thrives in low light.",
+    "image": "https://i.ibb.co.com/6GRxwT0/parker-sturdivant-Lh6t-Vz-Dd-Mg-unsplash.jpg",
+    "providerName": "UrbanGreen Studio"
+  },
+  {
+    "plantId": 2,
+    "plantName": "Peace Lily",
+    "category": "Flowering",
+    "price": 22,
+    "rating": 4.6,
+    "availableStock": 8,
+    "careLevel": "Medium",
+    "description": "Elegant white blooms that clean the air and brighten any room.",
+    "image": "https://i.ibb.co.com/bMVbJQ9r/natalie-kinnear-nt3e-W1-VW0a-Q-unsplash.jpg",
+    "providerName": "GreenNest Garden"
+  },
+  {
+    "plantId": 3,
+    "plantName": "Aloe Vera",
+    "category": "Medicinal",
+    "price": 15,
+    "rating": 4.7,
+    "availableStock": 12,
+    "careLevel": "Easy",
+    "description": "A healing succulent known for its skin-soothing gel and low maintenance.",
+    "image": "https://i.ibb.co.com/Myss56V2/jude-smart-l-E6z79gu-KI0-unsplash.jpg",
+    "providerName": "UrbanGreen Studio"
+  },
+  {
+    "plantId": 4,
+    "plantName": "Monstera Deliciosa",
+    "category": "Decorative",
+    "price": 35,
+    "rating": 4.9,
+    "availableStock": 6,
+    "careLevel": "Medium",
+    "description": "A tropical statement plant with iconic split leaves, perfect for living spaces.",
+    "image": "https://i.ibb.co.com/HLTW8QGt/giorgio-marini-ZUYzw-Hz-UQg-M-unsplash.jpg",
+    "providerName": "Leaf & Light Co."
+  },
+  {
+    "plantId": 5,
+    "plantName": "Spider Plant",
+    "category": "Air Purifier",
+    "price": 14,
+    "rating": 4.5,
+    "availableStock": 15,
+    "careLevel": "Easy",
+    "description": "Fast-growing, air-purifying plant with arching leaves and baby offshoots.",
+    "image": "https://i.ibb.co.com/TBHcFg6f/feey-Rt-H6r-Y9k738-unsplash.jpg",
+    "providerName": "Botanic Bliss"
+  },
+  {
+    "plantId": 6,
+    "plantName": "Fiddle Leaf Fig",
+    "category": "Decorative",
+    "price": 45,
+    "rating": 4.4,
+    "availableStock": 5,
+    "careLevel": "Hard",
+    "description": "A bold indoor plant with large, glossy leaves that add a modern touch.",
+    "image": "https://i.ibb.co.com/Swsz98F2/kara-eads-Eb-LX7o-Ro4v-I-unsplash.jpg",
+    "providerName": "GreenNest Garden"
+  },
+  {
+    "plantId": 7,
+    "plantName": "ZZ Plant",
+    "category": "Low Light",
+    "price": 28,
+    "rating": 4.8,
+    "availableStock": 9,
+    "careLevel": "Easy",
+    "description": "Thrives on neglect, perfect for beginners and low-light areas.",
+    "image": "https://i.ibb.co.com/JwMsVVck/kadarius-seegars-E2al-Kui-CUKY-unsplash.jpg",
+    "providerName": "UrbanGreen Studio"
+  },
+  {
+    "plantId": 8,
+    "plantName": "Boston Fern",
+    "category": "Hanging",
+    "price": 20,
+    "rating": 4.6,
+    "availableStock": 11,
+    "careLevel": "Medium",
+    "description": "A lush, feathery fern that adds softness and freshness to indoor corners.",
+    "image": "https://i.ibb.co.com/ds5q0n0V/jason-gardner-Rnrgib7lsjg-unsplash.jpg  ",
+    "providerName": "Leaf & Light Co."
+  }
+]
