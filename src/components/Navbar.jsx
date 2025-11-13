@@ -13,23 +13,23 @@ const Navbar = () => {
       <ul
         tabIndex="-1"
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <NavLink to='home' >Home</NavLink>
-        <NavLink to='plants'>Plants</NavLink>
-        <NavLink to='myprofile'>My Profile</NavLink>
+        <NavLink to='/' >Home</NavLink>
+        <NavLink to='/plants'>Plants</NavLink>
+        <NavLink to='/myprofile'>My Profile</NavLink>
       </ul>
     </div>
     <a className="font-bold text-green-700  text-3xl">GreenNest</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 gap-3 font-semibold text-green-500 pr-3 ">
-     <NavLink to='home' className='hover:text-blue-400'>Home</NavLink>
-     <NavLink to='plants' className='hover:text-blue-400' >Plants</NavLink>
-     <NavLink to='myprofile' className='hover:text-blue-400'>My Profile</NavLink>
+     <NavLink to='/' className={({isActive})=> isActive ? 'text-blue-600' : ''}>Home</NavLink>
+     <NavLink to='/plants' className={({isActive})=> isActive ? 'text-blue-600' : ''} >Plants</NavLink>
+     <NavLink to='/myprofile' className={({isActive})=> isActive ? 'text-blue-600' : ''}>My Profile</NavLink>
     </ul>
   </div>
   <div className="navbar-end">
-    <Link to='login' className='btn bg-green-500'>Login</Link>
-    <Link to='signup' className='btn bg-green-500'>Register</Link>
+    <Link to='/login' className='btn bg-green-500'>Login</Link>
+    <Link to='/signup' className='btn bg-green-500'>Register</Link>
   </div>
   
 </div>

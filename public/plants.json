@@ -1,6 +1,6 @@
 [
   {
-    "plantId": 1,
+    "id": 1,
     "plantName": "Snake Plant",
     "category": "Air Purifier",
     "price": 18,
@@ -12,7 +12,7 @@
     "providerName": "UrbanGreen Studio"
   },
   {
-    "plantId": 2,
+    "id": 2,
     "plantName": "Peace Lily",
     "category": "Flowering",
     "price": 22,
@@ -24,7 +24,7 @@
     "providerName": "GreenNest Garden"
   },
   {
-    "plantId": 3,
+    "id": 3,
     "plantName": "Aloe Vera",
     "category": "Medicinal",
     "price": 15,
@@ -36,7 +36,7 @@
     "providerName": "UrbanGreen Studio"
   },
   {
-    "plantId": 4,
+    "id": 4,
     "plantName": "Monstera Deliciosa",
     "category": "Decorative",
     "price": 35,
@@ -48,7 +48,7 @@
     "providerName": "Leaf & Light Co."
   },
   {
-    "plantId": 5,
+    "id": 5,
     "plantName": "Spider Plant",
     "category": "Air Purifier",
     "price": 14,
@@ -60,7 +60,7 @@
     "providerName": "Botanic Bliss"
   },
   {
-    "plantId": 6,
+    "id": 6,
     "plantName": "Fiddle Leaf Fig",
     "category": "Decorative",
     "price": 45,
@@ -72,7 +72,7 @@
     "providerName": "GreenNest Garden"
   },
   {
-    "plantId": 7,
+    "id": 7,
     "plantName": "ZZ Plant",
     "category": "Low Light",
     "price": 28,
@@ -84,7 +84,7 @@
     "providerName": "UrbanGreen Studio"
   },
   {
-    "plantId": 8,
+    "id": 8,
     "plantName": "Boston Fern",
     "category": "Hanging",
     "price": 20,

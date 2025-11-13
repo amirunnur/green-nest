@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Indoorplants = ({plant}) => {
     return (
@@ -15,7 +16,7 @@ const Indoorplants = ({plant}) => {
                      <p className='font-semibold'>Price: {plant.price} $</p>
                      <p className='font-semibold '>Rating: {plant.rating}</p>
                      <div className="">
-                       <button className="btn bg-green-500 w-full">View Details</button>
+                       <Link to={`/plantDetails/${plant.id}`} className="btn bg-green-500 w-full">View Details</Link> 
                      </div>
                    </div>
                  </div>

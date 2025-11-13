@@ -13,6 +13,7 @@ const Home = () => {
     const plants = useLoaderData()
     const featuredPlants = plants.slice(0,4)
     
+    
     return (
        <div className='bg-green-50'>
            <h1 className='text-4xl font-bold text-center m-5 text-green-900'>Top rated Indoor Plants</h1>

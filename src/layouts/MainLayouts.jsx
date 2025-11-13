@@ -9,11 +9,9 @@ const MainLayouts = () => {
     return (
         <div className='flex flex-col min-h-screen'>
             <Navbar></Navbar>
-            <div className=' '>
-                
-            </div>
+           
             
-            <Outlet></Outlet>
+            <Outlet ></Outlet>
             <Footer></Footer>
         </div>
     );
