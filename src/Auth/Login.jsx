@@ -1,46 +1,129 @@
-import React from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import React, { useState } from 'react';
+import {  FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
 import { Link } from 'react-router';
+import auth from '../Firebase/firebase.config';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
+  const [show,setShow]=useState(false)
+  const handleSignin=(e)=>{
+  e.preventDefault();
+  const email = e.target.email?.value;
+  const password = e.target.password?.value;
+   
+  signInWithEmailAndPassword(auth,email,password)
+  .then(res=>{
+    console.log(res)
+    toast.success('Login successful')
+  })
+  .catch(e=>{
+    console.log(e)
+    toast.error(e.message)
+  })
+  
+  }
    
     return (
      
-        <div >
+         <div className="min-h-[calc(100vh-20px)] flex items-center justify-center  relative overflow-hidden">
+      <div className="absolute inset-0">
+        <div className="absolute w-72 h-72 rounded-full blur-xl top-10 left-10 animate-pulse"></div>
+        <div className="absolute w-72 h-72 rounded-full blur-xl bottom-10 right-10 animate-pulse"></div>
+      </div>
+
+      
+        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10 p-6 lg:p-10 ">
          
-            <div className="hero bg-base-200 min-h-screen ">
-  <div className="hero-content flex-col w-[70%] ">
-    <div className="text-center ">
-      <h1 className="text-5xl font-bold">Login now!</h1>
-     
-    </div>
-    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-      <div className="card-body">
-        <fieldset className="fieldset">
-          <label className="label">Email</label>
-          <input type="email" className="input" placeholder="Email" />
-          <label className="label">Password</label>
-          <input type="password" className="input" placeholder="Password" />
-          <div><a className="link link-hover">Forgot password?</a></div>
-            <button
+          <div className="max-w-lg text-center lg:text-left">
+            <h1 className="text-5xl font-extrabold drop-shadow-lg">
+              Welcome Back
+            </h1>
+            <p className="mt-4 text-lg  leading-relaxed">
+              Sign in to continue your journey. Manage your account, explore new
+              features, and more.
+            </p>
+          </div>
+
+         
+          <div className="w-full max-w-md backdrop-blur-lg  border border-white/20 shadow-2xl rounded-2xl p-8">
+            
+             
+             {/* <div className='text-center space-y-3'>
+              <img className='h-20 w-20 rounded-full mx-auto' src={user?.photoURL || 'https://via.placeholder.com'} alt="" />
+              <h2 className='text-xl font-semibold'>{user?.displayName}</h2>
+              <p className='text-white/80 '>{user?.email}</p>
+              <button  className='my-btn'>Sign Out</button>
+
+             </div> */}
+             <form onSubmit={handleSignin} className="space-y-5">
+                <h2 className="text-2xl font-semibold mb-2 text-center ">
+                  Sign In
+                </h2>
+
+                <div>
+                  <label className="block text-sm mb-1">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="example@email.com"
+                    className="input input-bordered w-full bg-white/20   focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  />
+                </div>
+
+                <div className="relative">
+                  <label className="block text-sm mb-1">Password</label>
+                  <input
+                   type= {show ? 'text':'password'}
+                    name="password"
+                    placeholder="••••••••"
+                    className="input input-bordered w-full bg-white/20 placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  />
+                 <span onClick={()=>setShow(!show)}  className= "absolute right-2 top-9 cursor-pointer z-50"> 
+                  {show?  <FaRegEye /> :<FaRegEyeSlash />} </span>
+                </div>
+
+                <button type="submit" className="btn w-full bg-green-500">
+                  Login
+                </button>
+
+                
+                <div className="flex items-center justify-center gap-2 ">
+                  <div className="h-px w-16 bg-gray-600 "></div>
+                  <span className="text-sm ">or</span>
+                  <div className="h-px w-16 bg-gray-600"></div>
+                </div>
+
+               
+                <button
+                 
                   type="button"
-                  className="flex items-center justify-center bg-gray-200 gap-3 text-gray-800 px-5 py-2  w-full font-semibold hover:bg-gray-300 transition-colors cursor-pointer"
+                  className="flex items-center justify-center gap-3 bg-gray-200 text-gray-800 px-5 py-2 rounded-lg w-full font-semibold hover:bg-gray-300 transition-colors cursor-pointer"
                 >
                   <img
                     src="https://www.svgrepo.com/show/475656/google-color.svg"
                     alt="google"
-                    className="w-5 h-5"
+                    className="w-5 h-5 "
                   />
                   Continue with Google
                 </button>
-          <Link  className='btn bg-green-500'>Login</Link>
-          <p>Don't have an account ? <Link to='/signup' className='p-2 text-red-500 font-semibold'>Signup</Link></p>
-        </fieldset>
-      </div>
-    </div>
-  </div>
-</div>
+
+                <p className="text-center text-sm  mt-3">
+                Don't have an account ?{" "}
+                  <Link
+                    to="/signup"
+                    className="text-red-400  underline"
+                  >
+                    Sign up
+                  </Link>
+                </p>
+              </form>
+            
+          </div>
         </div>
+     
+    </div>
     );
 };
 

@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import {  createUserWithEmailAndPassword } from "firebase/auth";
 import auth from '../Firebase/firebase.config';
 import { toast } from 'react-toastify';
+import { FaRegEye } from "react-icons/fa6";
+import { FaRegEyeSlash } from "react-icons/fa6";
 
 
 const Signup = () => {
    
+    const [show,setShow]=useState(false)
     const handleSignup=(e)=>{
         e.preventDefault()
         const email = e.target.email?.value;
         const password = e.target.password?.value;
+
+        const regExp = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/ ;
+        if(!regExp.test(password)){
+            toast.error("Password must be at least 6 characters long and include both uppercase and lowercase letters.");
+            return;
+        }
        
-        createUserWithEmailAndPassword(auth,email,password)
+        createUserWithEmailAndPassword(auth,email,password) 
         .then(res=>{
             console.log(res)
             toast.success('signup successful')
@@ -63,18 +72,18 @@ const Signup = () => {
                 />
               </div>
 
-              <div  >
+              <div  className='relative'>
                 <label className="block text-sm font-medium mb-1">
                   Password
                 </label>
                 <input
-                  type= "text"
+                  type= {show ? 'text': 'password'}
                   name="password"
                   placeholder="••••••••"
                   className="input input-bordered w-full "
                 />
-               <span  className='absolute right-2 top-9cursor-pointer z-50'>
-                   
+               <span onClick={()=> setShow(!show)} className='absolute right-2 top-9 cursor-pointer z-50'>
+                  {show?  <FaRegEye /> :<FaRegEyeSlash />}
                </span>
               </div>
 
@@ -89,7 +98,7 @@ const Signup = () => {
                     to="/login"
                     className="text-red-500 font-medium underline"
                   >
-                    Sign in
+                    Login
                   </Link>
                 </p>
               </div>
