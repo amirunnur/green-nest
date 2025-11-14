@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router';
-import {  createUserWithEmailAndPassword } from "firebase/auth";
+import { Link,  NavLink, useNavigate } from 'react-router';
+import {  createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import auth from '../Firebase/firebase.config';
 import { toast } from 'react-toastify';
 import { FaRegEye } from "react-icons/fa6";
@@ -8,12 +8,18 @@ import { FaRegEyeSlash } from "react-icons/fa6";
 
 
 const Signup = () => {
+  const navigate = useNavigate()
    
     const [show,setShow]=useState(false)
     const handleSignup=(e)=>{
         e.preventDefault()
+       const name = e.target.name?.value;
+       const photo = e.target.photo?.value;
         const email = e.target.email?.value;
         const password = e.target.password?.value;
+
+        console.log(name,photo)
+        
 
         const regExp = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/ ;
         if(!regExp.test(password)){
@@ -23,11 +29,20 @@ const Signup = () => {
        
         createUserWithEmailAndPassword(auth,email,password) 
         .then(res=>{
+          updateProfile(res.user,{
+           displayName: name, photoURL: photo
+           }).then(res=>{
             console.log(res)
             toast.success('signup successful')
-           
-        })
-         .catch(e=>{
+           }).catch(e=>{
+            console.log(e)
+            toast.error(e.message)
+           })
+            console.log(res)
+            toast.success('signup successful')
+             navigate('/')
+             })
+           .catch(e=>{
                 toast.error(e.message)
             })
     }
@@ -62,11 +77,32 @@ const Signup = () => {
 
             <form onSubmit={handleSignup}  className="space-y-4">
               <div>
+                <label className="block text-sm font-medium mb-1">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your name"
+                  className="input input-bordered w-full 
+                  "
+                />
+              </div>
+              <div>
                 <label className="block text-sm font-medium mb-1">Email</label>
                 <input
                   type="email"
                   name="email"
                   placeholder="example@email.com"
+                  className="input input-bordered w-full 
+                  "
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-1">Photo URL</label>
+                <input
+                  type="text"
+                  name="photo"
+                  placeholder="Your photo"
+                  
                   className="input input-bordered w-full 
                   "
                 />
