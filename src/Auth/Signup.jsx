@@ -1,24 +1,28 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link,  NavLink, useNavigate } from 'react-router';
-import {  createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import auth from '../Firebase/firebase.config';
+
+
 import { toast } from 'react-toastify';
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegEyeSlash } from "react-icons/fa6";
+import { AuthContext } from '../Contex/AuthContex';
 
 
 const Signup = () => {
   const navigate = useNavigate()
-   
+
     const [show,setShow]=useState(false)
+
+    const {createUserWithEmailAndPasswordFunc,updateProfileFunc} = useContext(AuthContext)
+
     const handleSignup=(e)=>{
         e.preventDefault()
-       const name = e.target.name?.value;
-       const photo = e.target.photo?.value;
+       const displayName = e.target.name?.value;
+       const photoURL = e.target.photo?.value;
         const email = e.target.email?.value;
         const password = e.target.password?.value;
 
-        console.log(name,photo)
+        
         
 
         const regExp = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/ ;
@@ -27,11 +31,11 @@ const Signup = () => {
             return;
         }
        
-        createUserWithEmailAndPassword(auth,email,password) 
+        createUserWithEmailAndPasswordFunc(email,password) 
         .then(res=>{
-          updateProfile(res.user,{
-           displayName: name, photoURL: photo
-           }).then(res=>{
+         updateProfileFunc(
+           displayName, photoURL
+           ).then(res=>{
             console.log(res)
             toast.success('signup successful')
            }).catch(e=>{

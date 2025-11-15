@@ -1,35 +1,38 @@
-import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
-import React, { useState } from 'react';
-import {  FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
-import { Link } from 'react-router';
-import auth from '../Firebase/firebase.config';
-import { toast } from 'react-toastify';
 
-const googleProvider = new GoogleAuthProvider();
+import React, { useContext, useRef, useState } from 'react';
+import {  FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
+import { Link, useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../Contex/AuthContex';
+
+
 
 
 const Login = () => {
-  const [show,setShow]=useState(false)
-  const [user,setUser]=useState(null)
 
- const handleSignOut=()=>{
-   signOut(auth).then(() => {
-    toast.success('Signout successful')
-    setUser(null)
-   }).catch(e=>{
-     toast.error(e.message)
-   })
- }
+  const navigate = useNavigate()
+
+  const [show,setShow]=useState(false)
+ 
+   
+   const emailRef = useRef(null)
+
+   const {signInWithEmailAndPasswordFunc,signInWithEmailFunc,
+     sendPasswordResetEmailFunc,user,setUser
+   }=useContext(AuthContext)
+
+ 
 
   const handleSignin=(e)=>{
   e.preventDefault();
   const email = e.target.email?.value;
   const password = e.target.password?.value;
    
-  signInWithEmailAndPassword(auth,email,password)
+  signInWithEmailAndPasswordFunc(email,password)
   .then(res=>{
     setUser(res.user)
     toast.success('Login successful')
+    navigate('/')
   })
   .catch(e=>{
     toast.error(e.message)
@@ -39,7 +42,7 @@ const Login = () => {
   console.log(user)
 
    const handleGoogleSignIn =()=>{
-  signInWithPopup(auth,googleProvider )
+  signInWithEmailFunc ()
   .then(res=>{
     console.log(res)
     toast.success('Login successful')
@@ -48,6 +51,17 @@ const Login = () => {
     console.log(e)
     toast.error(e.message)
   })
+  }
+
+  const handleForgetPassword = ()=>{
+      const email = emailRef.current.value;
+    console.log(email)
+      sendPasswordResetEmailFunc(email).then(()=>{
+      toast.success('Check your email to reset password')
+     }).catch(e=>{
+      toast .error(e.message)
+     })
+    
   }
    
     return (
@@ -75,16 +89,7 @@ const Login = () => {
           <div className="w-full max-w-md backdrop-blur-lg  border border-white/20 shadow-2xl rounded-2xl p-8">
             
              
-            
-             
-             {
-              user ? ( <div className='text-center space-y-3'>
-              <img className='h-20 w-20 rounded-full mx-auto' src={user?.photoURL || 'https://via.placeholder.com'} alt="" />
-              <h2 className='text-xl font-semibold'>{user?.displayName}</h2>
-              <p className=''>{user?.email}</p>
-              <button onClick={handleSignOut}   className='btn bg-green-500'>Sign Out</button>
-
-             </div>) : (<form onSubmit={handleSignin} className="space-y-5">
+              <form onSubmit={handleSignin} className="space-y-5">
                 <h2 className="text-2xl font-semibold mb-2 text-center ">
                   Sign In
                 </h2>
@@ -94,6 +99,7 @@ const Login = () => {
                   <input
                     type="email"
                     name="email"
+                    ref={emailRef}
                     placeholder="example@email.com"
                     className="input input-bordered w-full bg-white/20   focus:outline-none focus:ring-2 focus:ring-blue-400"
                   />
@@ -110,7 +116,10 @@ const Login = () => {
                  <span onClick={()=>setShow(!show)}  className= "absolute right-2 top-9 cursor-pointer z-50"> 
                   {show?  <FaRegEye /> :<FaRegEyeSlash />} </span>
                 </div>
-
+                <button className='hover:underline cursor-pointer'
+                 onClick={handleForgetPassword}
+                 type='button'
+                 >Forget password?</button>
                 <button type="submit" className="btn w-full bg-green-500">
                   Login
                 </button>
@@ -146,8 +155,8 @@ const Login = () => {
                     Sign up
                   </Link>
                 </p>
-              </form>)
-             }
+              </form>
+             
             
           </div>
         </div>
