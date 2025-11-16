@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 const Navbar = () => {
 
-  const {user,setUser,signOutFunc} = useContext(AuthContext)
+  const {user,setUser,signOutFunc,loading } = useContext(AuthContext)
   console.log(user)
 
   const handleSignOut=()=>{
@@ -16,6 +16,7 @@ const Navbar = () => {
      toast.error(e.message)
    })
  }
+ console.log(loading)
     return (
         <div >
             <div className="navbar bg-base-100 shadow-sm ">
@@ -29,7 +30,9 @@ const Navbar = () => {
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
         <NavLink to='/' >Home</NavLink>
         <NavLink to='/plants'>Plants</NavLink>
-        <NavLink to='/myprofile'>My Profile</NavLink>
+        {
+      user &&  <NavLink to='/myprofile' className={({isActive})=> isActive ? 'text-blue-600' : ''}>My Profile</NavLink>
+    }
       </ul>
     </div>
     <a className="font-bold text-green-700  text-3xl">GreenNest</a>
@@ -38,17 +41,19 @@ const Navbar = () => {
     <ul className="menu menu-horizontal px-1 gap-3 font-semibold text-green-500 pr-3 ">
      <NavLink to='/' className={({isActive})=> isActive ? 'text-blue-600' : ''}>Home</NavLink>
      <NavLink to='/plants' className={({isActive})=> isActive ? 'text-blue-600' : ''} >Plants</NavLink>
-     <NavLink to='/myprofile' className={({isActive})=> isActive ? 'text-blue-600' : ''}>My Profile</NavLink>
+    {
+      user &&  <NavLink to='/myprofile' className={({isActive})=> isActive ? 'text-blue-600' : ''}>My Profile</NavLink>
+    }
     </ul>
   </div>
-  {
+  { loading ? 'loading...' :
     user ?  ( <div className='md:ml-100 ml-20 text-center space-y-3'>
               
             
             {/* change popover-1 and --anchor-1 names. Use unique names for each dropdown */}
 {/* For TSX uncomment the commented types below */}
 <button className="btn" popoverTarget="popover-1" style={{ anchorName: "--anchor-1" } /* as React.CSSProperties */}>
- <img className='h-10 w-10 rounded-full mx-auto' src={user?.photoURL || 'https://via.placeholder.com'} alt="" />
+ <img className='h-10 w-10 rounded-full mx-auto' src={user?.photoURL} alt="" />
 </button>
 
            <ul className="dropdown menu w-52 rounded-box bg-base-100 shadow-sm"

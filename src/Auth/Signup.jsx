@@ -13,7 +13,7 @@ const Signup = () => {
 
     const [show,setShow]=useState(false)
 
-    const {createUserWithEmailAndPasswordFunc,updateProfileFunc} = useContext(AuthContext)
+    const {createUserWithEmailAndPasswordFunc,updateProfileFunc,signOutFunc,setUser} = useContext(AuthContext)
 
     const handleSignup=(e)=>{
         e.preventDefault()
@@ -43,9 +43,13 @@ const Signup = () => {
             toast.error(e.message)
            })
             console.log(res)
-            toast.success('signup successful')
-             navigate('/')
+            
              })
+             signOutFunc().then(() => {
+                  toast.success('signup successful')
+                 setUser(null)
+                  navigate('/login')
+                })
            .catch(e=>{
                 toast.error(e.message)
             })

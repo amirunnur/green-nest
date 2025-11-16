@@ -5,6 +5,7 @@ import Indoorplants from './Indoorplants';
 import PlantCare from './PlantCare';
 import Exparts from './Exparts';
 import EcoDecor from './EcoDecor';
+import Slider from './Slider';
 
 
 
@@ -16,6 +17,9 @@ const Home = () => {
     
     return (
        <div className='bg-green-50'>
+          
+          <Slider></Slider>
+
            <h1 className='text-4xl font-bold text-center m-5 text-green-900'>Top rated Indoor Plants</h1>
            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 w-[70%] mx-auto'>
                {

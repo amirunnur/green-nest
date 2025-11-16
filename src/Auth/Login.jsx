@@ -1,7 +1,7 @@
 
 import React, { useContext, useRef, useState } from 'react';
 import {  FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../Contex/AuthContex';
 
@@ -21,6 +21,10 @@ const Login = () => {
      sendPasswordResetEmailFunc,user,setUser
    }=useContext(AuthContext)
 
+   const location = useLocation()
+   const from = location.state || '/'
+   
+
  
 
   const handleSignin=(e)=>{
@@ -32,7 +36,7 @@ const Login = () => {
   .then(res=>{
     setUser(res.user)
     toast.success('Login successful')
-    navigate('/')
+    navigate(from)
   })
   .catch(e=>{
     toast.error(e.message)
@@ -46,6 +50,7 @@ const Login = () => {
   .then(res=>{
     console.log(res)
     toast.success('Login successful')
+    navigate(from)
   })
   .catch(e=>{
     console.log(e)

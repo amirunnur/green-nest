@@ -1,11 +1,14 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router';
 
+
 const PlantDetails = () => {
     const {id} = useParams()
    
    const plants = useLoaderData()
   const plant = plants.find(p=>String(p.id )=== id)
+
+  
   
     return (
         
@@ -28,18 +31,10 @@ const PlantDetails = () => {
                          <p>Description: {plant.description}</p>
                      </div>
                 </div>
+                
         </div>
     );
 };
 
 export default PlantDetails;
 
-// "plantName": "ZZ Plant",
-//     "category": "Low Light",
-//     "price": 28,
-//     "rating": 4.8,
-//     "availableStock": 9,
-//     "careLevel": "Easy",
-//     "description": "Thrives on neglect, perfect for beginners and low-light areas.",
-//     "image": "https://i.ibb.co.com/JwMsVVck/kadarius-seegars-E2al-Kui-CUKY-unsplash.jpg",
-//     "providerName": "UrbanGreen Studio"
